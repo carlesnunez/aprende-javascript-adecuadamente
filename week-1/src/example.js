@@ -1,0 +1,1 @@
+alert("The example.js has been loaded successful");

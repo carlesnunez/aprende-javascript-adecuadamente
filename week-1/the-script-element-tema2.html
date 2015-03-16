@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<!-- Cargar ficheros JS externos al documento HTML -->
+		<script type="text/javascript" src="src/example.js"></script>
+
+		<!-- Cargar ficheros JS externos al contexto del proyecto (de internet). -->
+		<script type="text/javascript" defer src="https://code.jquery.com/jquery-2.1.3.min.js"></script> 
+		<!-- El uso de defer define que ese script no se cargue hasta que toda la página este cargada lo mismo pasa con async la unica diferencia es el orden de carga de los ficheros, con defer se garantiza el orden y con async NO -->
+
+		<script type="text/javascript">
+			//Funcion basica de uso de alert.
+			function sayHi(){
+
+				//Variables
+				var message = "hi";
+				//Posible pero no recomendable
+				message = 100;
+				alert("Hi!");
+			};
+			
+			//Funcion demostrativa del uso de caracteres de escape.
+			function sayScript(){
+				globalVar = "goodbye";//Variable global.
+				alert("<\/script>");
+			};
+
+			function doSomething(){
+				"use strict";
+				//Lo que sea
+				return "ok";
+			};
+			
+			function tiposDeVariables(){
+				//Definir muchas variables en una sola linia.
+				var zitro = "interactive", found = false, edad = 23;
+
+				alert(typeof zitro);
+				alert(typeof found);
+				alert(typeof edad);
+
+			};
+
+			//Ejemplo de variables no declaradas o undefined.
+			function undefinedVars(){
+				var undfMessage;
+				alert(undfMessage == undefined);
+				alert(typeof undfMessage);
+				alert(noExisto);
+
+			};
+
+			//El tipo null
+			function tipoNull(){
+				var car = null;
+				alert(typeof car);
+
+				if(car != null){
+					alert("The car is not a null var");
+				}else{
+					alert("This is a null var");
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<!--En documentos HTML que requieren mucho JAVASCRIPT podemos poner los includes de ficheros .js en el body para agilizar la carga  -->
+	</body>
+</html>
