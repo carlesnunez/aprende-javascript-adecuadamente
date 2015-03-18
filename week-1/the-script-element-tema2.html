@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
-		<!-- Cargar ficheros JS externos al documento HTML -->
+				<!-- Cargar ficheros JS externos al documento HTML -->
 		<script type="text/javascript" src="src/example.js"></script>
 
 		<!-- Cargar ficheros JS externos al contexto del proyecto (de internet). -->
@@ -527,22 +526,20 @@
 				console.log(arguments.length);
 			}
 
+			function doAdd(){
+				if(arguments.length == 1){
+					console.log(arguments[0]+10);
+				}else{
+					console.log(arguments[0] + arguments[1]);
+				}
+			}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			function doAddOverwriteParam2(num1, num2) {
+				arguments[1] = 10;
+				console.log(arguments[0] + num2);
+				console.log(num2);
+				console.log(arguments.length);
+			}
 
 		</script>
 	</head>
