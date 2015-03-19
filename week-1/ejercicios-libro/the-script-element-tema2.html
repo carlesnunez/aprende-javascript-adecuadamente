@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+	<head>
+				<!-- Cargar ficheros JS externos al documento HTML -->
+		<script type="text/javascript" src="src/example.js"></script>
+
+		<!-- Cargar ficheros JS externos al contexto del proyecto (de internet). -->
+		<script type="text/javascript" defer src="https://code.jquery.com/jquery-2.1.3.min.js"></script> 
+		<!-- El uso de defer define que ese script no se cargue hasta que toda la página este cargada lo mismo pasa con async la unica diferencia es el orden de carga de los ficheros, con defer se garantiza el orden y con async NO -->
+
+		<script type="text/javascript">
+			//Funcion basica de uso de alert.
+			function sayHi(){
+
+				//Variables
+				var message = "hi";
+				//Posible pero no recomendable
+				message = 100;
+				alert("Hi!");
+			};
+			
+			//Funcion demostrativa del uso de caracteres de escape.
+			function sayScript(){
+				globalVar = "goodbye";//Variable global.
+				alert("<\/script>");
+			};
+
+			function doSomething(){
+				"use strict";
+				//Lo que sea
+				return "ok";
+			};
+			
+			function tiposDeVariables(){
+				//Definir muchas variables en una sola linia.
+				var zitro = "interactive", found = false, edad = 23;
+
+				alert(typeof zitro);
+				alert(typeof found);
+				alert(typeof edad);
+
+			};
+
+			//Ejemplo de variables no declaradas o undefined.
+			function undefinedVars(){
+				var undfMessage;
+				alert(undfMessage == undefined);
+				alert(typeof undfMessage);
+				alert(noExisto);
+
+			};
+
+			//El tipo null
+			function tipoNull(){
+				var car = null;
+				alert(typeof car);
+
+				if(car != null){
+					alert("The car is not a null var");
+				}else{
+					alert("This is a null var");
+				}
+			};
+
+			function notANumberNaN(){
+				alert(isNaN(NaN));
+				alert(isNaN(10));
+				alert(isNaN("10"));
+				alert(isNaN("blue"));
+				alert(isNaN(true));
+			};
+
+			function convertingToNumbers(){
+				var num1 = Number("Hello world!"), num2 = Number(""),  num3 = Number("000011");
+
+				console.log("Num1: "  + num1); //NaN
+				console.log("\nNum2: "+ num2); // 0
+				console.log("\nNum3: "+ num3); // 11
+			};
+
+			function conversionExampleUsingParseInt(){
+				var num1 = parseInt("1234blue"); //1234
+				var num2 = parseInt(""); // NaN
+				var num3 = parseInt("0xA"); // 10
+				var num4 = parseInt("22.5"); // 22
+				var num5 = parseInt("70"); // 70
+				var num6 = parseInt("0xf"); // 15
+
+				console.log("Num1: " + num1);
+				console.log("Num2: "+ num2);
+				console.log("Num3: " + num3);
+				console.log("Num4: " + num4);
+				console.log("Num5: " + num5);
+				console.log("Num6: " + num6);
+			};
+
+			function radixParseInt(){
+				var num1 = parseInt("10", 2); 
+				var num2 = parseInt("10", 8); 
+				var num3 = parseInt("10", 10); 
+				var num4 = parseInt("10", 16); 
+
+				console.log("Num1: " + num1);
+				console.log("Num2: "+ num2);
+				console.log("Num3: " + num3);
+				console.log("Num4: " + num4);
+			};
+
+			function parseFloatEx(){
+				var num1 = parseFloat("1234blue"); //1234 - integer
+				var num2 = parseFloat("0xA"); //0
+				var num3 = parseFloat("22.5"); //22.5
+				var num4 = parseFloat("22.34.5"); //22.34
+				var num5 = parseFloat("0908.5"); //908.5
+				var num6 = parseFloat("3.125e7"); //31250000
+
+				console.log("Num1: " + num1);
+				console.log("Num2: "+ num2);
+				console.log("Num3: " + num3);
+				console.log("Num4: " + num4);
+				console.log("Num5: " + num5);
+				console.log("Num6: " + num6);
+			};
+
+			function stringBasics(){
+				var texto = "Esta es la letra sigma: \u03a3";
+
+				var concateno = "Script";
+				concateno = "Java" + concateno;
+
+				console.log(texto);
+				console.log(concateno);
+			};
+
+			function convertingToString(){
+				var age = 11;
+				var ageAsString = age.toString(); // String 11
+				var found = true;
+				var foundAsString = found.toString(); // String true
+				console.log("Age as string: " + ageAsString);
+				console.log("Found as string: " + foundAsString);
+			};
+
+			function convertingToStringPasingAnArgument(){
+				var num = 10;
+				alert(num.toString()); //”10”
+				alert(num.toString(2)); //”1010”
+				alert(num.toString(8)); //”12”
+				alert(num.toString(10)); //”10”
+				alert(num.toString(16)); //”a”
+			};
+
+			function stringCast(){
+				var value1 = 10;
+				var value2 = true;
+				var value3 = null;
+				var value4;
+				alert(String(value1)); //”10”
+				alert(String(value2)); //”true”
+				alert(String(value3)); //”null”
+				alert(String(value4)); //”undefined”
+			};
+
+			function incrementOrDecrement(){
+				var age = 29;
+				var anotherAge = --age + 2;
+
+				console.log(age);
+				console.log(anotherAge);
+
+				var num1 = 2;
+				var num2 = 20;
+				var num3 = --num1 + num2; //equals 21
+				var num4 = num1 + num2; //equals 21
+
+				console.log(num3); //21
+				console.log(num4); //21
+			};
+
+			function decrementExample2(){
+				var s1 = "2";
+				var s2 = "z";
+				var b = false;
+				var f = 1.1;
+				var o = {
+					valueOf: function() {
+						return -1;
+					}
+				};
+				s1++; //value becomes numeric 3
+				s2++; //value becomes NaN
+				b++; //value becomes numeric 1
+				f--; //value becomes 0.10000000000000009 (due to floating-point inaccuracies)
+				o--; //value becomes numeric -2
+			};
+
+			function bitWiseNot(){
+				var num1 = 25;
+				var num2 = ~num1;
+				alert(num2);
+			};
+
+			function andByExample(){
+				var result = 33 & 3;
+				console.log(result);
+			};
+
+			function orByExample(){
+				var result = 25 | 3;
+				console.log(result);
+			};
+
+			function xorByExample(){
+				var result = 25 ^ 3;
+				console.log(result);
+			};
+
+			function signedLeftShift(){
+				var oldValue = 2;
+				var newValue = oldValue << 5;
+				console.log(newValue);
+			};
+
+			function signedRightShift(){
+				var oldValue = 64;
+				var newValue = oldValue >> 5;
+				console.log(newValue);
+			};
+
+			function unsignedRightShift(){
+				var oldValue = -64;
+				var newValue = oldValue >>> 5;
+				console.log(newValue);
+			};
+
+			/* Operadores */
+			function operadorNot(){
+				alert(!false); //true
+				alert(!"blue"); //false
+				alert(!0); //true
+				alert(!NaN); //true
+				alert(!""); //true
+				alert(!12345); //false
+			};
+
+			function operadorNotDoble(){
+				//Es equivalente al uso de Boolean()
+				alert(!!"blue"); //true
+				alert(!!0); //false
+				alert(!!NaN); //false
+				alert(!!""); //false
+				alert(!!12345); //true
+			};
+
+			function operadorANDConError(){
+				var found = true;
+				var result = (found && variableInexistente); //Crash en la ejecucion del codigo, detecta que found es true pero al llegar a comprobar variabl no seguirá adelante.
+				alert(result);
+			};
+
+			function operadorANDSinError(){
+				var found = false;
+				var result = (found && variableInexistente); //Detecta que found es false y no llega a comprobar la "variableInexistente".
+				alert(result);	
+			};
+
+			function operadorORSinError(){
+				var found = true;
+				var result = (found || variableInexistente); //Crash en la ejecucion del codigo, detecta que found es true pero al llegar a comprobar variabl no seguirá adelante.
+				alert(result);
+			};
+
+			function operadorORConError(){
+				var found = false;
+				var result = (found || variableInexistente); //Detecta que found es false y no llega a comprobar la "variableInexistente".
+				alert(result);	
+			};
+
+			function logicaDelOperadorAdd(){
+				var result1 = 5 + 5; //two numbers
+				alert(result1); //10
+				var result2 = 5 + "5"; //a number and a string
+				alert(result2); //”55”
+			};
+
+			function riesgosOperadorAdd(){
+				var num1 = 5;
+				var num2 = 10;
+				//Si en el conjunto de un STRING concatenamos dos variables numericas, se interpretaran como string y se "juntaran como tal"
+				var message = "The sum of 5 and 10 is " + num1 + num2 + "(Integers concatenados)";
+				alert(message); //”The sum of 5 and 10 is 510”
+
+				//La manera correcta de operar con numero dentro de cadenas es la sigiente.
+				message = "The sum of 5 an 10 is " + (num1 + num2) + "(Integers sumados)";
+				alert(message);
+			};
+
+			function operadorDeResta(){
+				var result1 = 5 - true; //4 because true is converted to 1
+				var result2 = NaN - 1; //NaN
+				var result3 = 5 - 3; //2
+				var result4 = 5 - ""; //5 because “” is converted to 0
+				var result5 = 5 - "2"; //3 because “2” is converted to 2
+				var result6 = 5 - null; //5 because null is converted to 0
+
+				console.log(result1);
+				console.log(result2);
+				console.log(result3);
+				console.log(result4);
+				console.log(result5);
+				console.log(result6);
+			};
+
+			function operadorMasPequenoOMasGrande(){
+				var result1 = 5 > 3;
+				var result2 = 5 < 3;
+
+				console.log(result1);
+				console.log(result2);
+
+			};
+
+			function igualadores(){
+				var result1 = ("55" == 55); //true - equal because of conversion
+				var result2 = ("55" === 55); //false - not equal because different data types
+
+				console.log(result1);
+				console.log(result2);
+			};
+
+			function diferenciadores(){
+				var result1 = ("55" != 55); //false - equal because of conversion
+				var result2 = ("55" !== 55); //true - not equal because different data types
+				console.log(result1);
+				console.log(result2);
+			};
+
+			function ifStatement(){
+
+				if(1==1) console.log("Se cumple la condicion"); else console.log("No se cumple");
+
+				var i = 26;
+				if(i > 25){
+					console.log("En el segundo if 'i' es superior a 25");
+				}else{
+					console.log("En esl segundo if 'i' es inferior a 25");
+				}
+			};
+
+			function doWhileStatement(){
+				var i = 0;
+				do {
+					console.log(i);
+					i += 2
+				}while (i < 10);
+			};
+
+			function whileStatement(){
+				var i = 0;
+				while (i < 10){
+					console.log(i);
+					i += 2;
+				}
+			};
+
+			function forStatement(){
+				var count = 10;
+				var i;
+				for(i= 0; i < count; i++){
+					console.log(i);
+				}
+			};
+
+			function forLikeWhile(){
+				var count = 10;
+				var i = 0;
+				for(; i < count ; i++){
+					console.log(i);
+				}
+			};
+
+			function forInByExample(){
+				for(var propName in window){
+					document.write(propName + "<br>");
+				}
+			};
+
+			function breakAndContinueStatement(){
+				var num = 0;
+
+				for (var i = 1; i < 10; i++) {
+					if(i % 5 == 0){
+						break;
+					}
+					num++;
+				}
+
+				console.log(num);
+
+				for (i = 1; i < 10; i++) {
+					if(i % 5 == 0){
+						continue;
+					}
+					num++;
+				}
+
+				console.log(num);
+			};
+
+			function breakWithLabel(){
+				var num = 0;
+				outermost:
+				for (var i=0; i < 10; i++) {
+					for (var j=0; j < 10; j++) {
+						if (i == 5 && j == 5) {
+							break outermost;
+						}
+						num++;
+					}
+				}
+				alert(num); //55
+			};
+
+			function continueWithLabel(){
+				var num = 0;
+				outermost:
+				for (var i=0; i < 10; i++) {
+					for (var j=0; j < 10; j++) {
+						if (i == 5 && j == 5) {
+							continue outermost;
+						}
+						num++;
+					}
+				}
+				alert(num); //95
+			};
+
+			function switchNormal(){
+				var i = 45;
+
+				switch(i){
+					case 25:
+						console.log("Es 25!");
+					break;
+
+					case 35:
+						console.log("Es 35!");
+					break;
+
+					case 45:
+						console.log("Es 45!");
+					break;
+
+					case 55:
+						console.log("Es 55!");
+					break;
+				}
+				i = 25;
+				console.log("********Case multiple**********");
+				switch (i) {
+					case 25:
+					/* falls through */
+					case 35:
+					console.log("Es 25 or 35");
+					break;
+					case 45:
+					console.log("Es 45");
+					break;
+					default:
+					console.log("Es otro");
+				}
+
+				console.log("*********Case con strings**********");
+
+				switch ("hello world") {
+					case "hello" + " world":
+						console.log("Greeting was found.");
+					break;
+					case "goodbye":
+						console.log("Closing was found.");
+					break;
+					default:
+						console.log("Unexpected message was found.");
+				}
+
+				console.log("*************Case con operadores logicos.***********");
+
+				i = 25;
+
+				switch(true){
+					case i < 0:
+						console.log("Less than 0.");
+					break;
+					case i >= 0 && i <= 10:
+						console.log("Between 0 and 10.");
+					break;
+					case i > 10 && i <= 20:
+						console.log("Between 10 and 20.");
+					break;
+					default:
+						console.log("More than 20.");
+				}
+			};
+
+
+			/*FUNCIONES */
+
+			function suma(num1, num2){
+				return num1 + num2;
+			}
+
+			function diff(num1, num2){
+				if(num1 < num2){
+					return num2 - num1;
+				}else{
+					return num1 - num2;
+				}
+			}
+
+			function sayHi(name, message) {
+				return;
+				alert("Hello " + arguments[0] + ", " + arguments[1]); //never called
+			}
+
+			function howManyArgs(){
+				console.log(arguments.length);
+			}
+
+			function doAdd(){
+				if(arguments.length == 1){
+					console.log(arguments[0]+10);
+				}else{
+					console.log(arguments[0] + arguments[1]);
+				}
+			}
+
+			function doAddOverwriteParam2(num1, num2) {
+				arguments[1] = 10;
+				console.log(arguments[0] + num2);
+				console.log(num2);
+				console.log(arguments.length);
+			}
+
+			/* NO OVERLOADING! */
+			function addSomeNumber(num){
+				return num + 100;
+			}
+
+			function addSomeNumber(num) {
+				return num + 200;
+			}
+
+
+		</script>
+	</head>
+	<body>
+		<!--En documentos HTML que requieren mucho JAVASCRIPT podemos poner los includes de ficheros .js en el body para agilizar la carga  -->
+	</body>
+</html>
