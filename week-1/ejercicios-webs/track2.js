@@ -12,3 +12,16 @@ console.log("Blancanieves y Batman estaban en el paradero de bus, esperando para
 console.log("Barman te mira con odio");
 
 var userAnswer = prompt("¿Te crees muy de buenas, idiota?");
+
+if(userAnswer == "Sí"){
+    console.log("Batman te golpea bien fuerte. ¡Él es Batman, y tú eres tú! ¡Pero                  claro que Batman te ganaría!");
+}else{
+    console.log("Decidiste que no te sientes con suerte. ¡Bien hecho! Haz ganado el                 juego de evitar que Batman te rompa la cara");
+}
+
+var retroalimentacion = prompt("¿Que te parece el juego?");
+if(retroalimentacion > 8){
+    console.log("Este es solo el comienzo de mi imperio de juegos. ¡Si quieres saber más, no te desconectes!");
+}else{
+    console.log("¡¿Me rompí la espalda haciendo este juego para que me des esa calificación?! ¡Es el colmo! ¡Ya verás!");
+}
