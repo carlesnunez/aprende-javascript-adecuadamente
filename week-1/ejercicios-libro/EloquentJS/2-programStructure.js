@@ -54,4 +54,17 @@ function chessTableMethod2(size){
 	  console.log(line);
 	}
 }
-chessTableMethod2(32);
+function creatingTheMinFunction(){
+	// Your code here.
+	var min = function(){
+	  for(var i = 0, smaller = 0; i < arguments.length; i++){
+	    if(arguments[i] < smaller){
+	    	smaller = arguments[i];
+	    }
+	  }
+	  
+	  return smaller;
+	};
+
+	console.log(min(1,5,9,-10));
+}
