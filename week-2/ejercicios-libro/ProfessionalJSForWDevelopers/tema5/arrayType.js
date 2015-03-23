@@ -69,6 +69,8 @@ var item = colors.pop(); //get the last item
 console.log(item); //”black”
 console.log(colors.length); //2
 console.log();
+
+
 //Usando shift. Shift permite realizar una estructura first in first out sacando el primer elemento del stack, es decir la posicion 0.
 var colors = new Array(); //create an array
 var count = colors.push("red", "green"); //push two items
@@ -79,6 +81,8 @@ var item = colors.shift(); //get the fi rst item
 console.log(item); //”red”
 console.log(colors.length); //2
 console.log();
+
+
 //Unshift realiza lo contrario. Coloca un valor al principio de la cola(posicion 0). Juntando unshift y pop podemos simular una cola.
 var colors = new Array(); //create an array
 var count = colors.unshift("red", "green"); //push two items
