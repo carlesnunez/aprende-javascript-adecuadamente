@@ -68,3 +68,35 @@ function creatingTheMinFunction(){
 
 	console.log(min(1,5,9,-10));
 }
+
+//Aplicando recursividad.
+function isEven(number){
+  if(number === 0){
+  	console.log("Is even");
+  }else if(number === 1 || number === -1){
+  	console.log("Is odd");
+  }else if(number > 0){
+  	isEven(number-2);
+  }else if(number < 0){
+  	isEven(number+2);
+  }
+}
+
+// Your code here.
+var countBs = function(word){
+  for(var i = 0, bs = 0; i < word.length; i++){
+    if(word[i] === "B"){
+    	++bs;
+    }
+  }
+  return bs;
+}
+
+var countChar = function(word, letter){
+  for(var i = 0, ltrs = 0; i < word.length; i++){
+    if(word[i] === letter){
+    	++ltrs;
+    }
+  }
+  return ltrs;
+}
