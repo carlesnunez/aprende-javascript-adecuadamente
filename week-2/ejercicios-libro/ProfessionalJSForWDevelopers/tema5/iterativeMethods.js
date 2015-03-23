@@ -34,3 +34,4 @@ numbers.forEach(function(item, index, array){
 });
 
 console.log(numbers);
+
