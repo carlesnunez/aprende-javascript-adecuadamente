@@ -59,3 +59,33 @@ console.log(people.toLocaleString()); //Nikolaos,Grigorios
 console.log(colors.join("@"));
 
 
+//Los array pueden actuar como pilas, por ello tenemos metodos como array.push o array.pop para tratarlos como tal.
+var colors = new Array(); //create an array
+var count = colors.push("red", "green"); //push two items
+console.log(count); //2
+count = colors.push("black"); //push another item on
+console.log(count); //3
+var item = colors.pop(); //get the last item
+console.log(item); //”black”
+console.log(colors.length); //2
+console.log();
+//Usando shift. Shift permite realizar una estructura first in first out sacando el primer elemento del stack, es decir la posicion 0.
+var colors = new Array(); //create an array
+var count = colors.push("red", "green"); //push two items
+console.log(count); //2
+count = colors.push("black"); //push another item on
+console.log(count); //3
+var item = colors.shift(); //get the fi rst item
+console.log(item); //”red”
+console.log(colors.length); //2
+console.log();
+//Unshift realiza lo contrario. Coloca un valor al principio de la cola(posicion 0). Juntando unshift y pop podemos simular una cola.
+var colors = new Array(); //create an array
+var count = colors.unshift("red", "green"); //push two items
+console.log(count); //2
+count = colors.unshift("black"); //push another item on
+console.log(count); //3
+var item = colors.pop(); //get the fi rst item
+console.log(item); //”green”
+console.log(colors.length); //2
+
