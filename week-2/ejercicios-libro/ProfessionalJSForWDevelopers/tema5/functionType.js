@@ -166,3 +166,26 @@ function callSum(num1, num2){
 }
 
 console.log(callSum(10,10));
+
+
+//Potencial de call
+
+function sayColorCalling(){
+	console.log(this.color);
+}
+//Call nos permite pasar el objeto que queremos que se use como this en el contecto de la funcion.
+console.log("Calling a function with call passing a object");
+sayColorCalling.call(o);
+console.log();
+sayColorCalling.call(window);
+
+/*BIND, nos permite "ligar" un objeto al this de una funcion permanentemente, de manera que esa funcion, se llame desde donde se llame,
+* siempre contendra como this el objeto usado en el bindeo
+*/
+console.log("***************************");
+var objectSayColor = sayColorCalling.bind(o);
+objectSayColor();
+o.color = "Yellow";
+objectSayColor();
+
+
