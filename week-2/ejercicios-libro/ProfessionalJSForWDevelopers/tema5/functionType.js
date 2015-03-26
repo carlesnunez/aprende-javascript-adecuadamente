@@ -185,6 +185,8 @@ sayColorCalling.call(window);
 console.log("***************************");
 var objectSayColor = sayColorCalling.bind(o);
 objectSayColor();
+
+//El objeto O queda bindeado
 o.color = "Yellow";
 objectSayColor();
 
