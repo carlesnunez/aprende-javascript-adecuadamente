@@ -103,10 +103,49 @@ ancestry.forEach(function(person){
 byCentury = byCentury.map(function(century){
 	return average(century);
 });
+
+
 console.log("\n\n_____Expectancy of life per century_____")
 byCentury.forEach(function(average, index, array){
 	console.log("Century",index, ":", average);
 });
 
+// Your code here.
+var every = function every(array, func, index){
 
+	var newArray = array.map(
+		function(element){
+			return func(element);
+		});
+  	var reducedArray = newArray.reduce(function(prev, current){
+	    if(!prev){
+	    	return false;
+	    }else{
+	    	return current;
+	    }
+  	});
+  	return reducedArray;
+};
+
+var some = function some(array, func){
+		var newArray = array.map(
+		function(element){
+			return func(element);
+		});
+		if(newArray.indexOf(true) !== -1){
+			return true;
+		}else{
+			return false;
+		}
+}
+
+console.log("Every: ", every([NaN, NaN, NaN], isNaN));
+// → true
+console.log("Every: ", every([NaN, NaN, 4], isNaN));
+// → false
+
+console.log("Some: ", some([NaN, 3, 4], isNaN));
+// → true
+console.log("Some: ", some([2, 3, 4], isNaN));
+// → false
 
