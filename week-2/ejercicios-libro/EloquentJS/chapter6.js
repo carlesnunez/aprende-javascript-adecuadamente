@@ -8,5 +8,11 @@ var Rabbit = function Rabbit(name, teethSize){
 }
 
 var bugsBunny = new Rabbit("bugsBunny", "Big");
+Rabbit.prototype.test = function(){return "LOL" + this.name};
 
-bugsBunny.getName();
+console.log(bugsBunny.getName());
+Rabbit.prototype.getName = function(){return "Moco"};
+console.log(bugsBunny.test());
+
+console.log(bugsBunny.getName());
+
