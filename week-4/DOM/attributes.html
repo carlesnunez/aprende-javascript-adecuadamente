@@ -1,0 +1,71 @@
+<blockquote id="quote">
+  No book can ever be finished. While working on it we learn
+  just enough to find it immature the moment we turn away
+  from it.
+</blockquote>
+<p>Here it is, the identity function:</p>
+<pre data-language="javascript">
+function id(x) { return x; }
+</pre>
+
+
+<script>
+  function elt(type) {
+    var node = document.createElement(type);
+    for (var i = 1; i < arguments.length; i++) {
+      var child = arguments[i];
+      if (typeof child == "string")
+        child = document.createTextNode(child);
+      node.appendChild(child);
+    }
+    return node;
+  }
+
+  document.getElementById("quote").appendChild(
+    elt("footer", "—",
+        elt("strong", "Karl Popper"),
+        ", preface to the second editon of ",
+        elt("em", "The Open Society and Its Enemies"),
+        ", 1950"));
+
+var languages = {
+  javascript: /\b(function|return|var)\b/g /* … etc */
+};
+function highlightCode(node, keywords) {
+  var text = node.textContent;
+  node.textContent = ""; // Clear the node
+
+  var match, pos = 0;
+  while (match = keywords.exec(text)) {
+    var before = text.slice(pos, match.index);
+    node.appendChild(document.createTextNode(before));
+    var strong = document.createElement("strong");
+    strong.appendChild(document.createTextNode(match[0]));
+    node.appendChild(strong);
+    pos = keywords.lastIndex;
+  }
+  var after = text.slice(pos);
+  node.appendChild(document.createTextNode(after));
+}
+function highlightAllCode() {
+  var pres = document.body.getElementsByTagName("pre");
+  for (var i = 0; i < pres.length; i++) {
+    var pre = pres[i];
+    var lang = pre.getAttribute("data-language");
+    if (languages.hasOwnProperty(lang))
+      highlightCode(pre, languages[lang]);
+  }
+}
+highlightAllCode();
+</script>
+
+<p data-classified="secret">The launch code is 00000000.</p>
+<p data-classified="unclassified">I have two feet.</p>
+
+<script>
+  var paras = document.body.getElementsByTagName("p");
+  Array.prototype.forEach.call(paras, function(para) {
+    if (para.getAttribute("data-classified") == "secret")
+      para.parentNode.removeChild(para);
+  });
+</script>
