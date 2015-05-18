@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Heading with a <span>span</span> element.</h1>
+
+<p>A paragraph with <span>one</span>, <span>two</span>
+    spans.</p>
+
+<script>
+
+    function byTagName(node, tagName) {
+        var matchArray = new Array();
+        function selfCalled(node, tagName) {
+            var tagUpper = tagName.toUpperCase();
+            for (var i = 0, len = node.childNodes.length; i < len; i++) {
+
+                if (node.childNodes[i].tagName === tagUpper) {
+                    matchArray.push(node.childNodes[i]);
+                }
+
+                if (node.childNodes[i].hasChildNodes()) {
+                    selfCalled(node.childNodes[i], tagUpper);
+                }
+            }
+        };
+
+        selfCalled(node, tagName);
+
+        return matchArray;
+    }
+
+    console.log(byTagName(document.body, "h1").length);
+    // → 1
+    console.log(byTagName(document.body, "span").length);
+    // → 3
+    var para = document.querySelector("p");
+    console.log(byTagName(para, "span").length);
+    // → 2
+</script>
+</body>
+</html>
