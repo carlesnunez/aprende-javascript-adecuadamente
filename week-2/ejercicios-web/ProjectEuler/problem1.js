@@ -11,7 +11,7 @@ var findMultiples = function findMultiples(to){
 	}
 	var sumMultiples = 0;
 	sum = multiples.reduce(sum);
-	return sumMultiples;
+	return sum;
 };
 
 console.log(findMultiples(1000));
