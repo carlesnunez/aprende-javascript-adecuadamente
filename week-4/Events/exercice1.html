@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text">
+</body>
+</html>
+<script>
+    var field = document.querySelector("input");
+    var censored = [81, 87, 88]
+    // Your code here.
+    field.addEventListener('keydown', function(e){
+                e.target.value.toUpperCase();
+                if(censored.indexOf(e.keyCode) !== -1){
+                    e.target.value = e.target.value.replace(String.fromCharCode(e.keyCode),'*');
+                    console.log(e.target.value);
+                }
+            }
+    );
+</script>
