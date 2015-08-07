@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 .idea/
-=======
 # Created by https://www.gitignore.io
 
 ### WebStorm ###
@@ -98,4 +96,3 @@ doc
 plato
 coverage
 karma_html
->>>>>>> cb64d4242ff92a4526e38c01db5b6cc8ff8dd0cd
